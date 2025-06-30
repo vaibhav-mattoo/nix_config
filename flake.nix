@@ -11,7 +11,11 @@
     stylix.url = "github:danth/stylix/release-25.05";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     host = "zaneyos-23-vm";
     profile = "vm";
