@@ -69,5 +69,11 @@
         modules = [./profiles/vm];
       };
     };
+    checks =
+      builtins.mapAttrs (
+        name: config:
+          config.config.system.build.toplevel
+      )
+      self.nixosConfigurations;
   };
 }
