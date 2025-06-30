@@ -73,7 +73,7 @@
         modules = [./profiles/vm];
       };
     };
-    checks =
+    checks.${system} =
       builtins.mapAttrs (
         name: config:
           config.config.system.build.toplevel
