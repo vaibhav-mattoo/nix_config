@@ -13,8 +13,8 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     system = "x86_64-linux";
-    host = "zaneyos-23-vm";
-    profile = "vm";
+    host = "default";
+    profile = "nvidia-laptop";
     username = "dwilliams";
   in {
     nixosConfigurations = {
