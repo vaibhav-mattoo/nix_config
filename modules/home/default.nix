@@ -23,7 +23,6 @@ in {
     ./rofi
     ./qt.nix
     ./scripts
-    ./starship.nix
     ./stylix.nix
     ./swappy.nix
     ./swaync.nix

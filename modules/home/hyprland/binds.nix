@@ -18,7 +18,6 @@ in {
       "$modifier,E,exec,emopicker9000"
       "$modifier,S,exec,screenshootin"
       "$modifier,D,exec,discord"
-      "$modifier,O,exec,obs"
       "$modifier,C,exec,hyprpicker -a"
       "$modifier,T,exec,pypr toggle term"
       "$modifier,M,exec,pavucontrol"

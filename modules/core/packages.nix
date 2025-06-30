@@ -23,7 +23,6 @@
     appimage-run # Needed For AppImage Support
     brave # Brave Browser
     brightnessctl # For Screen Brightness Control
-    cmatrix # Matrix Movie Effect In Terminal
     docker-compose # Allows Controlling Docker From A Single File
     duf # Utility For Viewing Disk Usage In Terminal
     dysk # disk usage util
@@ -59,7 +58,7 @@
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
     usbutils # Good Tools For USB Devices
-    v4l-utils # Used For Things Like OBS Virtual Camera
+    v4l-utils # Video4Linux utilities for video devices
     waypaper # backup wallpaper GUI
     wget # Tool For Fetching Files With Links
   ];
