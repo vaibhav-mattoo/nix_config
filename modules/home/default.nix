@@ -15,9 +15,7 @@ in {
     ./ghostty.nix
     ./git.nix
     ./gtk.nix
-    ./htop.nix
     ./hyprland
-    ./kitty.nix
     ./lazygit.nix
     ./nvf.nix
     ./rofi
@@ -27,9 +25,7 @@ in {
     ./swappy.nix
     ./swaync.nix
     ./virtmanager.nix
-    ./vscode.nix
     waybarChoice
-    ./wezterm.nix
     ./wlogout
     ./xdg.nix
     ./yazi

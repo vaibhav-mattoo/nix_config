@@ -27,8 +27,8 @@
         # You can change this to your preferred terminal
         # ToDo: Pull default terminal from host config
         # This should not impact bindings, etc
-        "TERMINAL,kitty"
-        "XDG_TERMINAL_EMULATOR,kitty"
+        "TERMINAL,ghostty"
+        "XDG_TERMINAL_EMULATOR,ghostty"
       ];
     };
   };

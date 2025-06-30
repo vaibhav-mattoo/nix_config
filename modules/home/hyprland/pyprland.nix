@@ -9,8 +9,8 @@
 
     [scratchpads.term]
     animation = "fromTop"
-    command = "kitty --class kitty-dropterm"
-    class = "kitty-dropterm"
+    command = "ghostty --class term-dropdown"
+    class = "term-dropdown"
     size = "70% 70%"
     max_size = "1920px 100%"
   '';
