@@ -19,16 +19,23 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /usr/local/share/chromium
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/graalvm
+          sudo rm -rf /usr/local/julia*
+
       - name: Install Nix with flakes
         uses: DeterminateSystems/nix-installer-action@v3
 
-      # Speed boost 1: Magic Nix Cache (reduces build times by 30-50%)
+      # Only ONE Magic Nix Cache step
       - name: Setup Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@main
-
-      # Speed boost 2: FlakeHub cache (pre-caches common dependencies)
-      - name: Setup FlakeHub cache
-        uses: DeterminateSystems/flakehub-cache-action@main
 
       - name: Update flake inputs
         run: nix flake update
