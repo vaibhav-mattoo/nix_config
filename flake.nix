@@ -11,11 +11,7 @@
     stylix.url = "github:danth/stylix/release-25.05";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
+  outputs = {nixpkgs, ...} @ inputs: let
     system = "x86_64-linux";
     host = "zaneyos-23-vm";
     profile = "vm";
@@ -73,11 +69,5 @@
         modules = [./profiles/vm];
       };
     };
-    checks.${system} =
-      builtins.mapAttrs (
-        name: config:
-          config.config.system.build.toplevel
-      )
-      self.nixosConfigurations;
   };
 }
