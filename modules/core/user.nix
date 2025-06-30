@@ -28,7 +28,6 @@ in {
     isNormalUser = true;
     description = "${gitUsername}";
     extraGroups = [
-      "adbusers"
       "docker"
       "libvirtd"
       "lp"

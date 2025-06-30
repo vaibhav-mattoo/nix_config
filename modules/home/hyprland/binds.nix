@@ -20,7 +20,6 @@ in {
       "$modifier,D,exec,discord"
       "$modifier,O,exec,obs"
       "$modifier,C,exec,hyprpicker -a"
-      "$modifier,G,exec,gimp"
       "$modifier,T,exec,pypr toggle term"
       "$modifier,M,exec,pavucontrol"
       "$modifier,Q,killactive,"
