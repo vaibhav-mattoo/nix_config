@@ -24,7 +24,6 @@
     brave # Brave Browser
     brightnessctl # For Screen Brightness Control
     docker-compose # Allows Controlling Docker From A Single File
-    duf # Utility For Viewing Disk Usage In Terminal
     dysk # disk usage util
     eza # Beautiful ls Replacement
     ffmpeg # Terminal Video / Audio Editing
@@ -43,15 +42,12 @@
     lolcat # Add Colors To Your Terminal Command Output
     lshw # Detailed Hardware Information
     mpv # Incredible Video Player
-    ncdu # Disk Usage Analyzer With Ncurses Interface
     nixfmt-rfc-style # Nix Formatter
     onefetch #shows current build info and stats
     pavucontrol # For Editing Audio Levels & Devices
     pciutils # Collection Of Tools For Inspecting PCI Devices
-    picard # For Changing Music Metadata & Getting Cover Art
     pkg-config # Wrapper Script For Allowing Packages To Get Info On Others
     playerctl # Allows Changing Media Volume Through Scripts
-    rhythmbox
     ripgrep # Improved Grep
     socat # Needed For Screenshots
     sox # audio support for FFMPEG
