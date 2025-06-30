@@ -32,11 +32,6 @@ jobs:
       - name: Install Nix with flakes
         uses: DeterminateSystems/nix-installer-action@v3
 
-      - name: Generate hardware configuration
-        run: |
-          # Generate hardware configuration for the default host
-          sudo nixos-generate-config --show-hardware-config > ./hosts/default/hardware.nix
-
       - name: Update flake inputs
         run: nix flake update
 
