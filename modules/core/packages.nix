@@ -20,6 +20,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    lagrange
     appimage-run # Needed For AppImage Support
     brave # Brave Browser
     brightnessctl # For Screen Brightness Control
