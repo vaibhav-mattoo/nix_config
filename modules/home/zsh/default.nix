@@ -61,8 +61,8 @@
       cat = "bat";
       man = "batman";
       lg = "lazygit";
-      :q = "exit";
-      :Q = "exit";
+      ":q" = "exit";
+      ":Q" = "exit";
       cp = "cp -iv";
       mv = "mv -iv";
       rm = "rm -iv";
