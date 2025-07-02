@@ -6,6 +6,7 @@ _: {
     hyprlock.enable = false;
     ghostty.enable = false;
     neovim.enable = false;
+    btop.enable = false;
     qt.enable = true;
   };
 }
