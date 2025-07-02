@@ -7,7 +7,7 @@
   # ex "monitor=HDMI-A-1, 1920x1080@60,auto,1"
   #
   extraMonitorSettings = "
-    monitor = Virtual-1, 1920x1080@60,auto,1
+    monitor = eDP-1, 1920x1080@144,auto,1.2
     ";
 
   # Waybar Settings
