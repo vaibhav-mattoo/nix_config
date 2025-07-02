@@ -1,8 +1,25 @@
-# /path/to/your/neovim.nix
 { pkgs, ... }:
 
+let
+  #    Define only the parsers you need.
+  #    Customize this list for the languages you actually use.
+  treesitter-parsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+    lua
+    nix
+    python
+    bash
+    json
+    yaml
+    markdown # For LazyVim's default filetypes
+  ];
+
+  # This path now only contains your selected grammars.
+  grammarsPath = pkgs.symlinkJoin {
+    name = "nvim-treesitter-grammars";
+    paths = treesitter-parsers;
+  };
+in
 {
-  # Install dependencies that plugins might need at runtime
   home.packages = with pkgs; [
     gcc
     ripgrep
@@ -14,36 +31,51 @@
     vimAlias = true;
     viAlias = true;
     extraPackages = with pkgs; [ wl-clipboard ];
-
-    # 1. You MUST include both plugins.
-    #    - lazy-nvim: The core plugin manager.
-    #    - LazyVim: The starter kit distribution with all the plugins and configs.
+    # 2. Install only the specific parsers you defined above.
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
       LazyVim
-    ];
+      nvim-treesitter
+    ] ++ treesitter-parsers; # Append the list of parsers here
 
-    # 2. This Lua block is the "glue" that makes Nix and LazyVim compatible.
-    #    It's NOT optional.
     extraLuaConfig = ''
-      -- Set mapleader before lazy so keymaps are applied correctly
       vim.g.mapleader = " "
-      
-      -- Bootstrap lazy.nvim with Nix-specific settings
+
+      -- CRITICAL FIX: Add both paths BEFORE lazy.setup
+      -- Add Nix-provided grammars to the runtime path.
+      vim.opt.runtimepath:append("${grammarsPath}")
+      -- Also add the writable cache directory to the runtime path. This prevents
+      -- nvim-treesitter from trying to re-install parsers it can't find [3].
+      vim.opt.runtimepath:append(vim.fn.stdpath("cache") .. "/treesitters")
+
       require("lazy").setup({
-        -- This is the MOST IMPORTANT setting. It tells lazy.nvim to NOT
-        -- reset the plugin paths that Nix has carefully set up. If this is
-        -- missing or incorrect, lazy.nvim can't find its own files.
         performance = {
           reset_packpath = false,
-          rtp = {
-            reset = false,
-          },
+          rtp = { reset = false },
         },
-        -- This tells lazy.nvim which "spec" to load from the plugins
-        -- provided by Nix in the runtime path.
         spec = {
-          { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+          {
+            "nvim-treesitter/nvim-treesitter",
+            opts = {
+              -- Point to a writable directory to prevent all write errors [3].
+              parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters",
+              -- Ensure no runtime installations are ever attempted.
+              ensure_installed = {},
+              auto_install = false,
+              highlight = { enable = true },
+              indent = { enable = true },
+            },
+            -- Disable the build step, as Nix handles all parsers.
+            build = "",
+          },
+          {
+            "LazyVim/LazyVim",
+            import = "lazyvim.plugins",
+            extras = {
+              ["lazyvim.plugins.treesitter"] = false,
+            }
+          },
+          { "williamboman/mason.nvim", enabled = false },
         },
       })
     '';
