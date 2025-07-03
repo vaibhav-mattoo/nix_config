@@ -69,7 +69,6 @@ initContent = ''
 
   # Clean up
   rm -f -- "$tmp"
-  zle reset-prompt
 }
 
 # Make it a ZLE widget that modifies shell state
@@ -80,6 +79,7 @@ bindkey '^F' yazi-launch
   if [ -f $HOME/.zshrc-personal ]; then
     source $HOME/.zshrc-personal
   fi
+
 '';
 
     shellAliases = {
