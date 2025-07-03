@@ -80,6 +80,7 @@ bindkey '^F' yazi-launch
     source $HOME/.zshrc-personal
   fi
 
+fastfetch
 '';
 
     shellAliases = {

@@ -1,7 +1,7 @@
 {
   # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "Don Williams";
-  gitEmail = "don.e.williams@gmail.com";
+  gitUsername = "vaibhav";
+  gitEmail = "vaibhavmattoo1@gmail.com";
 
   # Hyprland Settings
   # ex "monitor=HDMI-A-1, 1920x1080@60,auto,1"
@@ -14,7 +14,7 @@
   clock24h = false;
 
   # Program Options
-  browser = "google-chrome-stable"; # Set Default Browser (google-chrome-stable for google-chrome)
+  browser = "brave"; # Set Default Browser (google-chrome-stable for google-chrome)
   terminal = "ghostty"; # Set Default System Terminal
   keyboardLayout = "us";
   consoleKeyMap = "us";
@@ -30,7 +30,7 @@
   printEnable = true;
 
   # Set Stylix Image
-  stylixImage = ../../wallpapers/AnimeGirlNightSky.jpg;
+  stylixImage = ../../wallpapers/beautifulmountainscape.jpg;
 
   # Set Waybar
   # Includes alternates such as:
