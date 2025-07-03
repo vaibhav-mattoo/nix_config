@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 let
-  #    Define only the parsers you need.
-  #    Customize this list for the languages you actually use.
+  # Define only the parsers you need.
+  # Customize this list for the languages you actually use.
   treesitter-parsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
     lua
     nix
@@ -31,7 +31,7 @@ in
     vimAlias = true;
     viAlias = true;
     extraPackages = with pkgs; [ wl-clipboard ];
-    # 2. Install only the specific parsers you defined above.
+    # Install only the specific parsers you defined above.
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
       LazyVim
@@ -41,14 +41,21 @@ in
     extraLuaConfig = ''
       vim.g.mapleader = " "
 
+      -- User settings: Enable word wrap and disable animations
+      vim.opt.wrap = true       -- Enable line wrapping
+      vim.opt.linebreak = true  -- Wrap lines at word boundaries, not in the middle of a word
+
       -- CRITICAL FIX: Add both paths BEFORE lazy.setup
       -- Add Nix-provided grammars to the runtime path.
       vim.opt.runtimepath:append("${grammarsPath}")
-      -- Also add the writable cache directory to the runtime path. This prevents
-      -- nvim-treesitter from trying to re-install parsers it can't find [3].
+      -- Also add the writable cache directory to the runtime path.
       vim.opt.runtimepath:append(vim.fn.stdpath("cache") .. "/treesitters")
 
       require("lazy").setup({
+        -- Disable LazyVim animations for a faster UI
+        ui = {
+          animate = false,
+        },
         performance = {
           reset_packpath = false,
           rtp = { reset = false },
@@ -57,7 +64,7 @@ in
           {
             "nvim-treesitter/nvim-treesitter",
             opts = {
-              -- Point to a writable directory to prevent all write errors [3].
+              -- Point to a writable directory to prevent all write errors.
               parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters",
               -- Ensure no runtime installations are ever attempted.
               ensure_installed = {},
@@ -81,4 +88,3 @@ in
     '';
   };
 }
-
