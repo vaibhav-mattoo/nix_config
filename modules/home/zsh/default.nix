@@ -40,16 +40,47 @@
       }
     ];
 
-    initContent = ''
-      bindkey "\eh" backward-word
-      bindkey "\ej" down-line-or-history
-      bindkey "\ek" up-line-or-history
-      bindkey "\el" forward-word
-      bindkey ';' autosuggest-accept
-      if [ -f $HOME/.zshrc-personal ]; then
-        source $HOME/.zshrc-personal
-      fi
-    '';
+
+
+initContent = ''
+  # Your existing bindkey settings
+  bindkey "\eh" backward-word
+  bindkey "\ej" down-line-or-history
+  bindkey "\ek" up-line-or-history
+  bindkey "\el" forward-word
+  bindkey ';' autosuggest-accept
+
+
+  function yazi-launch() {
+  # Create a temporary file to store the last directory
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+
+  # Launch Yazi, telling it where to write its last CWD on quit
+  yazi --cwd-file="$tmp"
+
+  # Read the CWD from the temp file safely.
+  local cwd
+  IFS= read -r  cwd < "$tmp"
+
+  # If a CWD was written and it's different from the current directory, change to it
+  if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+    cd -- "$cwd"
+  fi
+
+  # Clean up
+  rm -f -- "$tmp"
+  zle reset-prompt
+}
+
+# Make it a ZLE widget that modifies shell state
+zle -N yazi-launch
+bindkey '^F' yazi-launch
+
+
+  if [ -f $HOME/.zshrc-personal ]; then
+    source $HOME/.zshrc-personal
+  fi
+'';
 
     shellAliases = {
       sv = "sudo nvim";
