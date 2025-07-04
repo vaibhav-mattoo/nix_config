@@ -58,14 +58,25 @@ in
           {
             "LazyVim/LazyVim",
             import = "lazyvim.plugins",
-            -- Disable treesitter override so your opts apply
             extras = {
               ["lazyvim.plugins.treesitter"] = false,
             }
           },
           { "williamboman/mason.nvim", enabled = false },
+
+          {
+            "MeanderingProgrammer/markdown.nvim",
+            name = "render-markdown.nvim",
+            dependencies = { "nvim-treesitter/nvim-treesitter" },
+            ft = { "markdown" },
+            config = function()
+              require("render-markdown").setup({
+                headings = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+                bullets = { "●", "○", "◆", "◇" },
+              })
+            end,
+          },
         },
-        -- FIX animation toggle (must be top-level key in lazy.setup)
         ui = {
           icons = false,
           border = "rounded",
@@ -86,3 +97,4 @@ in
     '';
   };
 }
+
