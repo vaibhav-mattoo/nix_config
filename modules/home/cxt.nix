@@ -6,7 +6,7 @@ let
     owner = "vaibhav-mattoo";
     repo = "cxt";
     rev = "v0.1.1"; 
-    sha256 = "0000000000000000000000000000000000000000000000000000";
+    sha256 = "Oq2lh+KOV0r9qerhRMp1pyyWgeI/vGckDpwwApl5ScM=";
   };
 
   cxt = pkgs.rustPlatform.buildRustPackage rec {
@@ -27,7 +27,7 @@ let
   };
 in
 {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     cxt
   ];
 }
