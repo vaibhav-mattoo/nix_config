@@ -7,6 +7,7 @@ in {
     ./bat.nix
     ./btop.nix
     ./cava.nix
+    ./cxt.nix
     ./emoji.nix
     ./eza.nix
     ./fastfetch

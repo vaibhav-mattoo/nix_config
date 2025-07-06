@@ -3,6 +3,5 @@
     nodejs
     code-cursor
     cargo
-    virtualbox
   ];
 }
